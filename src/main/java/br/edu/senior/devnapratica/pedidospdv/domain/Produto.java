@@ -7,7 +7,7 @@ public class Produto {
 	private String descricao;
 	
 	private Double valor;
-
+	
 	public Long getId() {
 		return id;
 	}
@@ -31,5 +31,6 @@ public class Produto {
 	public void setValor(Double valor) {
 		this.valor = valor;
 	}
+	
 	
 }

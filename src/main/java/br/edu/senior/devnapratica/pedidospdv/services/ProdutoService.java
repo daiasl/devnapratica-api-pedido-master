@@ -20,12 +20,23 @@ public class ProdutoService {
 		return produtoDAO.buscar(produtoId);
 	}
 	public Produto salvar(Produto produto) {
+		validarProduto(produto.getValor());
 		return produtoDAO.salvar(produto);
 	}
 	public Produto alterar(Produto produto) {
+		validarProduto(produto.getValor());
 		return produtoDAO.alterar(produto);
 	}
 	public void excluir (Long produtoId) {
 		produtoDAO.excluir(produtoId);
 	}
+	private void validarProduto(Double valor) {
+		if (valor == null) {
+			throw new IllegalArgumentException("O valor do produto não pode ser nulo!");
+		}
+		if (valor <= 0) {
+			throw new IllegalArgumentException("O valor do produto deve ser maior que zero!");			
+		}		
+	}
+	
 }

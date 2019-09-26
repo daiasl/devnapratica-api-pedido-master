@@ -56,6 +56,7 @@ public class PedidoService {
 		if (!clienteOpt.isPresent()) {
 			throw new IllegalArgumentException("O cliente " + pedido.getCliente().getId() + " não existe!");
 		}
+		
 		pedido.setCliente(clienteOpt.get());
 
 		for (ItemPedido itemPedido : pedido.getItens()) {
@@ -65,8 +66,12 @@ public class PedidoService {
 
 			Optional<Produto> produtoOpt = produtoDAO.buscar(itemPedido.getProduto().getId());
 			if (!produtoOpt.isPresent()) {
-				throw new IllegalArgumentException("O cliente " + pedido.getCliente().getId() + " não existe!");
+				throw new IllegalArgumentException("O produto " + itemPedido.getProduto().getId() + " não existe!");
 			}
+			if (itemPedido.getQuantidade() == 0) {
+				throw new IllegalArgumentException("A quantidade de produtos deve ser maior que zero!");
+			}
+			
 			itemPedido.setProduto(produtoOpt.get());
 		}
 	}

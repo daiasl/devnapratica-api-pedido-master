@@ -7,7 +7,7 @@ public class Pedido {
 	private Long id;
 
 	private Cliente cliente;
-
+	
 	private List<ItemPedido> itens;
 
 	private StatusPedido status;
@@ -27,7 +27,7 @@ public class Pedido {
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
 	}
-
+	
 	public List<ItemPedido> getItens() {
 		return itens;
 	}
